@@ -14,7 +14,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import com.example.navprayas.FirebaseService.FirebaseLoginSignup
 import com.example.navprayas.R
-import com.example.navprayas.activity.MainActivity
 import com.google.android.gms.common.SignInButton
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText

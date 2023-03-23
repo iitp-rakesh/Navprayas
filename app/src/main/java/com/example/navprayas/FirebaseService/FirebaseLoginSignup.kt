@@ -8,7 +8,7 @@ import androidx.core.content.ContextCompat.startActivity
 import androidx.fragment.app.Fragment
 import com.example.navprayas.R
 import com.example.navprayas.activity.loginActivity.LoginViewModel
-import com.example.navprayas.activity.MainActivity
+import com.example.navprayas.activity.mainactivity.MainActivity
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.GoogleApiClient
@@ -122,7 +122,18 @@ class FirebaseLoginSignup(private val context: Context) {
             Log.w(TAG, "Google sign in failed")
         }
     }
-
+    fun resetPassword(email: String) {
+        auth.sendPasswordResetEmail(email)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Log.d(TAG, "Email sent.")
+                    Toast.makeText(
+                        context, "Email sent",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+    }
     companion object {
         const val RC_SIGN_IN = 9001
         private const val TAG = "FirebaseService"

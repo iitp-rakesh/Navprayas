@@ -15,6 +15,7 @@
         <activity
             android:name=".activity.loginActivity.LoginActivity"
             android:exported="false"
+            android:theme="@style/Theme.Navprayas"
             >
             <meta-data
                 android:name="android.app.lib_name"
@@ -42,7 +43,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".activity.mainactivity.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.Navprayas">
             <meta-data

@@ -35,6 +35,7 @@ class LoginHomeFragment : Fragment() {
         val signIn = view.findViewById<MaterialButton>(R.id.btn_sign_in)
         val googleSignIn = view.findViewById<SignInButton>(R.id.btn_sign_in_with_google)
         val signUp = view.findViewById<TextView>(R.id.tv_sign_up)
+        val forgotPassword = view.findViewById<TextView>(R.id.tv_forgot_password)
         fireBaseService = FirebaseLoginSignup(view.context)
         signUp.setOnClickListener {
             val action = LoginHomeFragmentDirections.actionLoginHomeFragmentToSignupFragment()
@@ -47,6 +48,10 @@ class LoginHomeFragment : Fragment() {
         googleSignIn.setOnClickListener {
             Toast.makeText(context, "Logging In", Toast.LENGTH_SHORT).show()
             fireBaseService.signInWithGoogle(this)
+        }
+        forgotPassword.setOnClickListener {
+            if (editTextError(email))
+                fireBaseService.resetPassword(email.text.toString())
         }
     }
 

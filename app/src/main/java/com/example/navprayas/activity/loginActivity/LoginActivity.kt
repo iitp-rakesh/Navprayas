@@ -6,10 +6,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import com.example.navprayas.FirebaseService.FirebaseLoginSignup
 import com.example.navprayas.R
-import com.example.navprayas.activity.MainActivity
-import com.google.firebase.auth.FirebaseAuth
+import com.example.navprayas.activity.mainactivity.MainActivity
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var navController: NavController

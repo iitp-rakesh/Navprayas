@@ -60,6 +60,15 @@ dependencies {
     implementation 'com.google.android.gms:play-services-auth:20.4.1'
 
     implementation 'com.airbnb.android:lottie:4.1.0'
+    //noinspection GradleDependency
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    //noinspection GradleDependency
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    //Viewpager Implementation
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
+
+    //CircleIndicator
+    implementation 'me.relex:circleindicator:2.1.6'
+    implementation 'com.makeramen:roundedimageview:2.3.0'
 }
