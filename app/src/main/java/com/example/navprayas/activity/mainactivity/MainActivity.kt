@@ -47,6 +47,7 @@ class MainActivity : AppCompatActivity() {
             when (menuItem.itemId) {
                 R.id.nav_home -> {
                     navController.navigate(R.id.mainActivityHomeFragment)
+                    drawerLayout.close()
                     true
                 }
                 R.id.nav_Logout -> {
@@ -69,14 +70,17 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.nav_profile -> {
                     navController.navigate(R.id.profileFragment)
+                    drawerLayout.close()
                     true
                 }
                 R.id.nav_AboutUs -> {
                     navController.navigate(R.id.aboutUsFragment)
+                    drawerLayout.close()
                     true
                 }
                 R.id.nav_ContactUs -> {
                     navController.navigate(R.id.contactUsFragment)
+                    drawerLayout.close()
                     true
                 }
                 else -> false

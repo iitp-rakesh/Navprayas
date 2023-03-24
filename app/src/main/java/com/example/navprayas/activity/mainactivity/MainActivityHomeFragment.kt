@@ -3,28 +3,24 @@ package com.example.navprayas.activity.mainactivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import android.widget.Toast.LENGTH_SHORT
+import android.widget.ImageView
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AlertDialog
-import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import androidx.viewpager.widget.ViewPager
+import com.bumptech.glide.Glide
 import com.example.navprayas.R
 import com.example.navprayas.adapter.CarouselAdapter
 import com.example.navprayas.adapter.TopEventsAdapter
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.google.firebase.ktx.app
 import me.relex.circleindicator.CircleIndicator
 import java.util.*
 
@@ -34,7 +30,6 @@ private val viewModel: MainActivityViewModel by activityViewModels()
     private lateinit var indicator: CircleIndicator
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.setName(auth.currentUser?.displayName.toString())
     }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,7 +41,7 @@ private val viewModel: MainActivityViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val images = listOf(R.drawable.ic_baseline_call_24, R.drawable.np_logo,R.drawable.imag3,R.drawable.image2,R.drawable.image,R.drawable.image4)
+        val images = listOf(R.drawable.ic_baseline_call_24,R.drawable.ic_baseline_double_arrow_24)
         val adapter = CarouselAdapter(images, requireContext())
         val viewPager = view.findViewById<ViewPager>(R.id.view_pager)
         viewPager.adapter = adapter
@@ -63,7 +58,6 @@ private val viewModel: MainActivityViewModel by activityViewModels()
             }
         }, 3000, 3000)
 
-
         val recyclerView = view.findViewById<RecyclerView>(R.id.rv_events)
         recyclerView.adapter = TopEventsAdapter()
         recyclerView.setHasFixedSize(true)
@@ -72,6 +66,13 @@ private val viewModel: MainActivityViewModel by activityViewModels()
         seeAll.setOnClickListener {
             val action=MainActivityHomeFragmentDirections.actionMainActivityHomeFragmentToEventFragment()
             view.findNavController().navigate(action)
+        }
+        val profilePic=view.findViewById<ImageView>(R.id.profile_image)
+        viewModel.student.observe(viewLifecycleOwner) {
+            Glide.with(this).load(it.image).into(profilePic)
+        }
+        profilePic.setOnClickListener {
+            view.findNavController().navigate(MainActivityHomeFragmentDirections.actionMainActivityHomeFragmentToProfileFragment())
         }
     }
     override fun onActivityCreated(savedInstanceState: Bundle?) {

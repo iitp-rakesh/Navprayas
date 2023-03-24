@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.navprayas.R
 
 class TopEventsAdapter : RecyclerView.Adapter<TopEventsAdapter.TopEventsViewHolder>() {
-    val imagelist = listOf(R.drawable.imag3,R.drawable.image2,R.drawable.image,R.drawable.image4)
+    val imagelist = listOf(R.drawable.ic_baseline_call_24,R.drawable.ic_baseline_double_arrow_24)
     class TopEventsViewHolder(view: View): RecyclerView.ViewHolder(view) {
         val imageview: ImageView=view.findViewById(R.id.event_image)
         val title: TextView=view.findViewById(R.id.tv_event_name)
