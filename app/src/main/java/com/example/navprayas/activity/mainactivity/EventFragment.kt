@@ -26,7 +26,9 @@ class EventFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val recyclerView = view.findViewById<RecyclerView>(R.id.all_events_recycler_view)
-        recyclerView.adapter = TopEventsAdapter()
+        viewModel.eventImages.observe(viewLifecycleOwner){
+            recyclerView.adapter = TopEventsAdapter(it,viewModel.eventNameList,EventFragmentDirections.actionEventFragmentToEventInfoFragment())
+        }
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = GridLayoutManager(view.context,2, LinearLayoutManager.VERTICAL, false)
     }

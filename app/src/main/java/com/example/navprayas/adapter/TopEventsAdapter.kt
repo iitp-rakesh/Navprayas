@@ -1,16 +1,18 @@
 package com.example.navprayas.adapter
 
-import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.NavDirections
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.navprayas.R
+import com.example.navprayas.utils.ImageUtils
 
-class TopEventsAdapter : RecyclerView.Adapter<TopEventsAdapter.TopEventsViewHolder>() {
-    val imagelist = listOf(R.drawable.ic_baseline_call_24,R.drawable.ic_baseline_double_arrow_24)
+class TopEventsAdapter(private val imageList:List<String>, private val eventNameList: List<String>, private val action:NavDirections) : RecyclerView.Adapter<TopEventsAdapter.TopEventsViewHolder>() {
     class TopEventsViewHolder(view: View): RecyclerView.ViewHolder(view) {
         val imageview: ImageView=view.findViewById(R.id.event_image)
         val title: TextView=view.findViewById(R.id.tv_event_name)
@@ -20,10 +22,15 @@ class TopEventsAdapter : RecyclerView.Adapter<TopEventsAdapter.TopEventsViewHold
         return TopEventsViewHolder(view)
     }
     override fun onBindViewHolder(holder: TopEventsViewHolder, position: Int) {
-        val currentImage = imagelist[position]
-        holder.imageview.setImageResource(currentImage)
+        val currentImage = imageList[position]
+        val currentEventName = eventNameList[position]
+        Glide.with(holder.imageview.context).load(currentImage).into(holder.imageview)
+        holder.title.text = currentEventName.toString()
+        holder.imageview.setOnClickListener {
+            holder.imageview.findNavController().navigate(action)
+        }
     }
     override fun getItemCount(): Int {
-        return imagelist.size
+        return imageList.size
     }
 }

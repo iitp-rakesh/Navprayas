@@ -5,6 +5,7 @@ import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.Toast
@@ -118,5 +119,17 @@ class MainActivity : AppCompatActivity() {
             }
             builder.show()
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.notification, menu)
+
+        // Get the notification menu item and set a listener
+        val notificationMenuItem = menu?.findItem(R.id.notification_item)
+        notificationMenuItem?.setOnMenuItemClickListener {
+            navController.navigate(R.id.notificationFragment)
+            true
+        }
+        return true
     }
 }

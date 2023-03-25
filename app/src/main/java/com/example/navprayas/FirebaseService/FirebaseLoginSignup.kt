@@ -3,11 +3,14 @@ package com.example.navprayas.FirebaseService
 import android.content.Context
 import android.content.Intent
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.example.navprayas.R
 import com.example.navprayas.activity.loginActivity.LoginViewModel
+import com.example.navprayas.activity.loginActivity.SignupFragmentDirections
 import com.example.navprayas.activity.mainactivity.MainActivity
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -54,7 +57,7 @@ class FirebaseLoginSignup(private val context: Context) {
             }
     }
 
-    fun signup(email: String, password: String) {
+    fun signup(email: String, password: String,view: View) {
         Log.w(TAG, email + " " + password)
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
@@ -66,6 +69,7 @@ class FirebaseLoginSignup(private val context: Context) {
                         context, "Verification Email Sent",
                         Toast.LENGTH_SHORT
                     ).show()
+                     view.findNavController().navigate(SignupFragmentDirections.actionSignupFragmentToLoginHomeFragment())
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "createUserWithEmail:failure", task.exception)

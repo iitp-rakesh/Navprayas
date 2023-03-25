@@ -2,12 +2,15 @@ package com.example.navprayas.activity.loginActivity
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import com.example.navprayas.FirebaseRepository
 import com.example.navprayas.R
 import com.example.navprayas.activity.mainactivity.MainActivity
+import com.example.navprayas.models.Student
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var navController: NavController

@@ -8,7 +8,11 @@
         android:id="@+id/eventFragment"
         android:name="com.example.navprayas.activity.mainactivity.EventFragment"
         android:label="Events"
-        tools:layout="@layout/fragment_event" />
+        tools:layout="@layout/fragment_event" >
+        <action
+            android:id="@+id/action_eventFragment_to_eventInfoFragment"
+            app:destination="@id/eventInfoFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.navprayas.activity.mainactivity.ProfileFragment"
@@ -17,7 +21,7 @@
     <fragment
         android:id="@+id/mainActivityHomeFragment"
         android:name="com.example.navprayas.activity.mainactivity.MainActivityHomeFragment"
-        android:label=""
+        android:label="Navprayas"
         tools:layout="@layout/fragment_main_activity_home" >
         <action
             android:id="@+id/action_mainActivityHomeFragment_to_profileFragment"
@@ -31,6 +35,12 @@
         <action
             android:id="@+id/action_mainActivityHomeFragment_to_aboutUsFragment"
             app:destination="@id/aboutUsFragment" />
+        <action
+            android:id="@+id/action_mainActivityHomeFragment_to_eventInfoFragment"
+            app:destination="@id/eventInfoFragment" />
+        <action
+            android:id="@+id/action_mainActivityHomeFragment_to_notificationFragment"
+            app:destination="@id/notificationFragment" />
     </fragment>
     <fragment
         android:id="@+id/aboutUsFragment"
@@ -42,4 +52,14 @@
         android:name="com.example.navprayas.activity.mainactivity.ContactUsFragment"
         android:label="Contact Us"
         tools:layout="@layout/fragment_contact_us" />
+    <fragment
+        android:id="@+id/eventInfoFragment"
+        android:name="com.example.navprayas.activity.mainactivity.EventInfoFragment"
+        android:label="Event Details"
+        tools:layout="@layout/fragment_event_info" />
+    <fragment
+        android:id="@+id/notificationFragment"
+        android:name="com.example.navprayas.activity.mainactivity.NotificationFragment"
+        android:label="Notifications"
+        tools:layout="@layout/fragment_notification" />
 </navigation>

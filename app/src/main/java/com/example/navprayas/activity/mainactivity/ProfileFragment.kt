@@ -6,13 +6,19 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import android.util.Log.d
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.bumptech.glide.Glide
+import com.example.navprayas.R
 import com.example.navprayas.databinding.FragmentProfileBinding
+import com.google.api.ResourceProto.resource
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class ProfileFragment : Fragment() {
     private val viewModel: MainActivityViewModel by activityViewModels()
@@ -37,10 +43,10 @@ class ProfileFragment : Fragment() {
         val profilePic = binding.profileImage
         val changeImage = binding.changeImage
         imageUri = null
-        changeImage.setOnClickListener() {
+        changeImage.setOnClickListener {
             openImagePicker()
         }
-        binding.btnEdit.setOnClickListener() {
+        binding.btnEdit.setOnClickListener {
             name.isEnabled = true
             clas.isEnabled = true
             mobileNumber.isEnabled = true
@@ -48,7 +54,7 @@ class ProfileFragment : Fragment() {
             changeImage.visibility = View.VISIBLE
             name.requestFocus()
         }
-        binding.btnSave.setOnClickListener() {
+        binding.btnSave.setOnClickListener {
             name.isEnabled = false
             clas.isEnabled = false
             mobileNumber.isEnabled = false
@@ -58,6 +64,8 @@ class ProfileFragment : Fragment() {
             viewModel.setClass(clas.text.toString())
             viewModel.setAdrress(address.text.toString())
             viewModel.setMobileNumber(mobileNumber.text.toString())
+            viewModel.student.value?.email= Firebase.auth.currentUser?.email.toString()
+            Log.d("Reps", "xyz ${viewModel.student.value}")
             viewModel.updateUser()
         }
         viewModel.student.observe(viewLifecycleOwner) {
@@ -68,6 +76,11 @@ class ProfileFragment : Fragment() {
             address.setText(it.address)
             val imageUri = it.image
             Glide.with(this).load(imageUri).into(profilePic)
+            if(imageUri.toString()=="null") {
+                Log.d("Repos", "xyz $imageUri")
+                Glide.with(this).load(R.drawable.ic_baseline_person_24).into(profilePic)
+
+            }
         }
     }
 

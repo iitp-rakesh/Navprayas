@@ -1,25 +1,169 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.mainactivity.ContactUsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <EditText
-        android:layout_marginTop="100dp"
-        android:id="@+id/textview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="right"
-        android:text="@string/email_address" />
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottie_contact_us"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_rawRes="@raw/contactus"
+            app:lottie_loop="true" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Button" />
+        <TextView
+            android:id="@+id/tv_email_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="Email"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lottie_contact_us" />
+
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_baseline_mail_24"
+            android:drawablePadding="8dp"
+            android:text="zyx@gmail.com"
+            android:textIsSelectable="true"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@id/tv_email_address"
+            app:layout_constraintStart_toStartOf="@id/tv_email_address"
+            app:layout_constraintTop_toBottomOf="@id/tv_email_address" />
+
+        <TextView
+            android:id="@+id/phone_number_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="Phone Number"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/email" />
+
+        <TextView
+            android:id="@+id/phone_number1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_baseline_call_24"
+            android:drawablePadding="8dp"
+            android:textIsSelectable="true"
+            android:text="+911234567890"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@id/phone_number_text"
+            app:layout_constraintStart_toStartOf="@id/phone_number_text"
+            app:layout_constraintTop_toBottomOf="@id/phone_number_text" />
+
+        <TextView
+            android:id="@+id/phone_number2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_baseline_call_24"
+            android:drawablePadding="8dp"
+            android:text="+911234567890"
+            android:textIsSelectable="true"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@id/phone_number_text"
+            app:layout_constraintStart_toStartOf="@id/phone_number_text"
+            app:layout_constraintTop_toBottomOf="@id/phone_number1" />
+
+        <TextView
+            android:id="@+id/office_location_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="Office Location"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/phone_number2" />
+
+        <TextView
+            android:id="@+id/office_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_baseline_location_on_24"
+            android:drawablePadding="8sp"
+            android:text="A-118 X Colony, Gaya, Bihar "
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@id/office_location_text"
+            app:layout_constraintStart_toStartOf="@id/office_location_text"
+            app:layout_constraintTop_toBottomOf="@id/office_location_text" />
+
+        <TextView
+            android:id="@+id/tv_social_media_links"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="Our Social Media Links"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/office_location" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_social_media_links"
+            android:orientation="horizontal">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lottie_instagram"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:padding="15dp"
+                android:layout_weight="1"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/instagram" />
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lottie_facebook"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="15dp"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/facebook" />
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lottie_linkedin"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="15dp"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/linkedin" />
+<!--            <com.airbnb.lottie.LottieAnimationView-->
+<!--                android:id="@+id/lottie_twitter"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_weight="1"-->
+<!--                android:padding="15dp"-->
+<!--                app:lottie_autoPlay="true"-->
+<!--                app:lottie_loop="true"-->
+<!--                app:lottie_rawRes="@raw/twitter" />-->
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

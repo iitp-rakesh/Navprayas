@@ -1,5 +1,7 @@
 package com.example.navprayas.activity.mainactivity
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,38 +12,50 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.activityViewModels
 import com.example.navprayas.R
+import com.example.navprayas.databinding.FragmentContactUsBinding
 
 class ContactUsFragment : Fragment() {
     private val viewModel: MainActivityViewModel by activityViewModels()
+    private lateinit var binding: FragmentContactUsBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        binding = FragmentContactUsBinding.inflate(inflater, container, false)
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_contact_us, container, false)
+        return binding.root
 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        // Get references to the TextView and Button views
-        val textView = view.findViewById<EditText>(R.id.textview)
-        val editButton = view.findViewById<Button>(R.id.button)
 
-// Disable editing initially
-        textView.isEnabled = false
+        val facebookUrl = "https://www.facebook.com/navprayas.np/"
+        val linkedInUrl = "https://www.linkedin.com/company/navprayas/"
+        val instagramUrl = "https://www.instagram.com/navprayas.np/"
 
-// Set click listener on the edit button
-        editButton.setOnClickListener {
-            // Enable editing when button is clicked
-            textView.isEnabled = true
+// Set click listeners for each button
+        binding.lottieFacebook.setOnClickListener {
+            openLink(facebookUrl, "com.facebook.katana")
+        }
+        binding.lottieLinkedin.setOnClickListener {
+            openLink(linkedInUrl, "com.linkedin.android")
         }
 
-// Optional: Set a focus change listener to disable editing when focus is lost
-        textView.setOnFocusChangeListener { _, hasFocus ->
-            if (!hasFocus) {
-                textView.isEnabled = false
-            }
+        binding.lottieInstagram.setOnClickListener {
+            openLink(instagramUrl, "com.instagram.android")
+        }
+    }
+
+    private fun openLink(url: String, pack: String) {
+        val packageManager = context?.packageManager
+        try {
+            // First try to launch the Instagram app
+            val intent = packageManager?.getLaunchIntentForPackage(pack)
+            startActivity(intent)
+        } catch (e: Exception) {
+            // If the Instagram app is not installed, launch the website
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
         }
     }
 }

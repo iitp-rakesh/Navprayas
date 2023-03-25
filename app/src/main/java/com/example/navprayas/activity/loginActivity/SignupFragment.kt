@@ -54,7 +54,7 @@ class SignupFragment : Fragment() {
                 password.error="Password must be greater than 6 characters"
             }
             else if(password.text.toString()==confirmPassword.text.toString()) {
-                fireBaseService.signup(email.text.toString(), password.text.toString())
+                fireBaseService.signup(email.text.toString(), password.text.toString(),view)
             }
             else{
                 confirmPassword.error="Password does not match"

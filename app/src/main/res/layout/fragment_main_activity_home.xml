@@ -31,10 +31,11 @@
                     android:layout_height="match_parent">
 
                     <TextView
+                        android:id="@+id/name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
-                        android:text="Hii, Navprayas"
+                        android:text="Hii,"
                         android:textSize="24sp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -92,6 +93,19 @@
                         app:layout_constraintTop_toBottomOf="@id/tv_announcement"
                         app:layout_constraintStart_toStartOf="parent"
                         tools:ignore="SpeakableTextPresentCheck" />
+                    <com.airbnb.lottie.LottieAnimationView
+                        android:id="@+id/loader"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        app:layout_constraintTop_toTopOf="@id/view_pager"
+                        app:layout_constraintEnd_toEndOf="@id/view_pager"
+                        app:layout_constraintStart_toStartOf="@id/view_pager"
+                        app:layout_constraintBottom_toBottomOf="@id/view_pager"
+                        app:lottie_rawRes="@raw/loader"
+                        app:lottie_autoPlay="true"
+                        app:lottie_loop="true"
+                        />
 
                     <me.relex.circleindicator.CircleIndicator
                         android:id="@+id/indicator"

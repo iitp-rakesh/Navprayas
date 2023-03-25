@@ -9,6 +9,4 @@ data class Student(
     var mobileNumber:String,
     var address:String,
     var image: Uri?
-){
-
-}
+)
