@@ -1,10 +1,12 @@
 package com.example.navprayas.activity.mainactivity
 
 import android.annotation.SuppressLint
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
@@ -22,12 +24,15 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.navprayas.R
 import com.example.navprayas.activity.loginActivity.LoginActivity
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.messaging.FirebaseMessaging
+import com.google.firebase.messaging.ktx.messaging
 
 class MainActivity : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
@@ -37,6 +42,31 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        //FirebaseMessaging
+        Firebase.messaging.isAutoInitEnabled = true
+
+        //Token Generation
+        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                Log.w(TAG, "Fetching FCM registration token failed", task.exception)
+                return@OnCompleteListener
+            }
+
+            // Get new FCM registration token
+            val token = task.result
+            Log.d("Repos", token.toString())
+        })
+        //Subscribe to A Topic
+//        Firebase.messaging.subscribeToTopic("weather")
+//            .addOnCompleteListener { task ->
+//                var msg = "Subscribed"
+//                if (!task.isSuccessful) {
+//                    msg = "Subscribe failed"
+//                }
+//                Log.d(TAG, msg)
+//                Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
+//            }
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.nav_mainactivity) as NavHostFragment
         val drawerLayout = findViewById<DrawerLayout>(R.id.drawer_layout)
@@ -53,16 +83,16 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.nav_Logout -> {
                     val auth = Firebase.auth
-                    val builder=AlertDialog.Builder(this)
+                    val builder = AlertDialog.Builder(this)
                     builder.setTitle("Logout")
                     builder.setMessage("Are you sure you want to logout?")
-                    builder.setPositiveButton("Yes"){dialog, which ->
+                    builder.setPositiveButton("Yes") { dialog, which ->
                         auth.signOut()
                         val intent = Intent(this, LoginActivity::class.java)
                         startActivity(intent)
                         finish()
                     }
-                    builder.setNegativeButton("No"){dialog, which ->
+                    builder.setNegativeButton("No") { dialog, which ->
                         dialog.dismiss()
                     }
                     val dialog: AlertDialog = builder.create()
@@ -130,6 +160,8 @@ class MainActivity : AppCompatActivity() {
             navController.navigate(R.id.notificationFragment)
             true
         }
+        val faqMenuItem = menu?.findItem(R.id.faq)
+        faqMenuItem?.isVisible = false
         return true
     }
 }

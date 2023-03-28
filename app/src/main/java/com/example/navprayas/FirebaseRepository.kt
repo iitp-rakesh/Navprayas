@@ -60,7 +60,7 @@ class FirebaseRepository {
                         student.email = auth.currentUser?.email.toString()
                         student.clas = ""
                         student.address = ""
-                        student.mobileNumber = auth.currentUser?.phoneNumber.toString()
+                        student.mobileNumber= ""
                     }
                     Log.d("Repos", "Student: $student")
                     callback(student)

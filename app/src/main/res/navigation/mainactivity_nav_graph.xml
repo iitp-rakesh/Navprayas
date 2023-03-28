@@ -41,6 +41,12 @@
         <action
             android:id="@+id/action_mainActivityHomeFragment_to_notificationFragment"
             app:destination="@id/notificationFragment" />
+        <action
+            android:id="@+id/action_mainActivityHomeFragment_to_noInternetFragment"
+            app:destination="@id/noInternetFragment" />
+        <action
+            android:id="@+id/action_mainActivityHomeFragment_to_FAQsFragment"
+            app:destination="@id/FAQsFragment" />
     </fragment>
     <fragment
         android:id="@+id/aboutUsFragment"
@@ -62,4 +68,13 @@
         android:name="com.example.navprayas.activity.mainactivity.NotificationFragment"
         android:label="Notifications"
         tools:layout="@layout/fragment_notification" />
+    <fragment
+        android:id="@+id/noInternetFragment"
+        android:name="com.example.navprayas.activity.mainactivity.NoInternetFragment"
+        tools:layout="@layout/fragment_no_internet" />
+    <fragment
+        android:id="@+id/FAQsFragment"
+        android:name="com.example.navprayas.activity.mainactivity.FAQsFragment"
+        android:label="FAQs"
+        tools:layout="@layout/fragment_f_a_qs" />
 </navigation>

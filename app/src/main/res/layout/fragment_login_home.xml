@@ -22,7 +22,8 @@
             app:layout_constraintTop_toTopOf="parent"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
-            app:lottie_rawRes="@raw/loginscreen" />
+            app:lottie_rawRes="@raw/loginscreen"
+            />
         <TextView
             android:id="@+id/tv_welcome_back"
             android:layout_width="wrap_content"
@@ -131,13 +132,13 @@
             android:id="@+id/tv_sign_up"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="108dp"
+            android:layout_marginStart="6dp"
             android:clickable="true"
             android:focusable="true"
             android:text="@string/sign_up"
             android:textColor="#1E88E5"
             app:layout_constraintBottom_toBottomOf="@id/tv_dont_have_an_account"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_dont_have_an_account"
             app:layout_constraintTop_toTopOf="@id/tv_dont_have_an_account"
             tools:ignore="TouchTargetSizeCheck" />
 

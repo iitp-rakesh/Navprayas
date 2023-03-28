@@ -42,6 +42,7 @@
                 android:id="@+id/et_name"
                 android:layout_width="match_parent"
                 android:layout_height="61dp"
+                style="@style/EditText"
                 android:enabled="false"
                 android:inputType="textEmailAddress"
                 android:textColorHint="#546E7A"
@@ -64,6 +65,7 @@
                 android:layout_height="61dp"
                 android:enabled="false"
                 android:inputType="textEmailAddress"
+                style="@style/EditText"
                 android:textColorHint="#546E7A"
                 tools:ignore="MissingConstraints,TextContrastCheck" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -83,6 +85,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="61dp"
                 android:enabled="false"
+                style="@style/EditText"
                 android:inputType="number"
                 android:textColorHint="#546E7A"
                 tools:ignore="MissingConstraints,TextContrastCheck" />
@@ -102,6 +105,7 @@
                 android:id="@+id/et_mobile_number"
                 android:layout_width="match_parent"
                 android:layout_height="61dp"
+                style="@style/EditText"
                 android:enabled="false"
                 android:inputType="number|textEmailAddress"
                 android:textColorHint="#546E7A"
@@ -123,6 +127,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:enabled="false"
+                style="@style/EditText"
                 android:inputType="textMultiLine"
                 android:textColorHint="#546E7A"
                 tools:ignore="MissingConstraints,TextContrastCheck" />

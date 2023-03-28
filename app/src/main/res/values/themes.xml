@@ -20,4 +20,7 @@
         <item name="windowNoTitle">true</item>
         <item name="android:windowBackground">@color/background</item>
     </style>
+    <style name="EditText">
+        <item name="android:textColor">@color/black</item>
+    </style>
 </resources>
