@@ -12,7 +12,7 @@ class CarouselAdapter(private var images: List<String>, private val context: Con
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val imageView = ImageView(context)
-        imageView.scaleType=ImageView.ScaleType.CENTER_CROP
+        imageView.scaleType=ImageView.ScaleType.FIT_CENTER
         Glide.with(context)
             .load(images[position])
             .fitCenter()

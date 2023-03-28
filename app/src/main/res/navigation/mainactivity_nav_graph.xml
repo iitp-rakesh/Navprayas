@@ -47,6 +47,9 @@
         <action
             android:id="@+id/action_mainActivityHomeFragment_to_FAQsFragment"
             app:destination="@id/FAQsFragment" />
+        <argument
+            android:name="event_name"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/aboutUsFragment"
@@ -62,7 +65,11 @@
         android:id="@+id/eventInfoFragment"
         android:name="com.example.navprayas.activity.mainactivity.EventInfoFragment"
         android:label="Event Details"
-        tools:layout="@layout/fragment_event_info" />
+        tools:layout="@layout/fragment_event_info" >
+        <argument
+            android:name="eventName"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/notificationFragment"
         android:name="com.example.navprayas.activity.mainactivity.NotificationFragment"

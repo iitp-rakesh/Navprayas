@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.bumptech.glide.Glide.init
 import com.example.navprayas.FirebaseRepository
 import com.example.navprayas.R
 import com.example.navprayas.models.Notification
@@ -35,7 +36,20 @@ class MainActivityViewModel : ViewModel() {
     private val _notificationList: MutableLiveData<List<Notification>> = MutableLiveData()
     val notificationList: LiveData<List<Notification>> = _notificationList
 
+    private val _eventDetails: MutableLiveData<MutableMap<String, List<List<String>>>> =
+        MutableLiveData()
+    val eventDetails: LiveData<MutableMap<String, List<List<String>>>> = _eventDetails
+
+    private val _currentEventName : MutableLiveData<String> = MutableLiveData()
+    val currentEventName: LiveData<String> = _currentEventName
+
+    private val map = mutableMapOf<String, List<List<String>>>()
     init {
+        map["MTSE"]= listOf(listOf("About","Im About"), listOf("Fee","30"), listOf("Timeline","32-32-1324","23-74-8374"))
+        map["Code Mantra"]= listOf(listOf("About","Im Code Mantra"), listOf("Fee","30"), listOf("Timeline","32-32-1324","23-74-8374"))
+        map["Rangotsav"]= listOf(listOf("About","Im Rangotsav"), listOf("Fee","30"), listOf("Timeline","32-32-1324","23-74-8374"))
+        map["Puzzle Race"]= listOf(listOf("About","Im Puzzle Race"), listOf("Fee","30"), listOf("Timeline","32-32-1324","23-74-8374"))
+        _eventDetails.value=map
         Log.d("Repos", "_student.value: ${_student.value}")
 //        _student.value = firebaseRepository.getUserDetails().value
 //        firebaseRepository.getUserDetails(_student)
@@ -49,7 +63,6 @@ class MainActivityViewModel : ViewModel() {
                 _announcementsImage.value = firebaseRepository.downloadImages("announcements").value
                 _eventImage.value = firebaseRepository.downloadImages("events").value
             }
-
         }
     }
 
@@ -81,5 +94,9 @@ class MainActivityViewModel : ViewModel() {
             updateUser()
             Log.d("repos", "2")
         }
+    }
+    fun currentEventName(name: String) {
+        _currentEventName.value=name
+        Log.d("Repos", "currentEventName:${_currentEventName.value}")
     }
 }

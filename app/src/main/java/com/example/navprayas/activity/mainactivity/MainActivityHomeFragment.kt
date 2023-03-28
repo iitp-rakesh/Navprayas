@@ -71,10 +71,9 @@ class MainActivityHomeFragment : Fragment() {
         val recyclerView = view.findViewById<RecyclerView>(R.id.rv_events)
         viewModel.eventImages.observe(viewLifecycleOwner) {
             recyclerView.adapter = TopEventsAdapter(
+                viewModel,
                 it,
-                viewModel.eventNameList,
-                MainActivityHomeFragmentDirections.actionMainActivityHomeFragmentToEventInfoFragment()
-            )
+                viewModel.eventNameList)
         }
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager =
